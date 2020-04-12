@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Apex Map Tracker</title>
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+    </head>
+
+    <body onload="myFunction()">
+        <h1>Apex Legends Map Tracker</h1>
+        <p>The current map is:</p>
+        <h2><p id="map">CURRENT_MAP</p></h2>
+        <p id="desc">DESC_TEXT</p>
+
+        <script>
+            function myFunction() {
+                var seconds = new Date().getTime() / 1000;
+                var curtime = (seconds + 3600) % 12600;
+                var output;
+                var flavour;
+
+                if (curtime < 5400) {
+                    output = "World's Edge"
+                    flavour = "May the blessing of Matt be with you, Brother"
+                } else if (curtime < 10800) {
+                    output = "Kings Canyon"
+                    flavour = "It still loves me guys, right? Right?"
+                } else {
+                    output = "Kings Canyon Night"
+                    flavour = "Don't worry buddy, you'll be back to World's Edge in no time"
+                }
+
+                document.getElementById("map").innerHTML = output;
+                document.getElementById("desc").innerHTML = flavour;
+            }
+        </script>
+    </body>
+</html>
