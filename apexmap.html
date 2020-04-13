@@ -5,32 +5,63 @@
         <link rel="stylesheet" type="text/css" href="css/main.css">
     </head>
 
-    <body onload="myFunction()">
+    <body onload="apexMap()">
         <h1>Apex Legends Map Tracker</h1>
         <p>The current map is:</p>
-        <h2><p id="map">CURRENT_MAP</p></h2>
-        <p id="desc">DESC_TEXT</p>
+        <h2><p id="map"></p></h2>
+        <strong><p id="timer"></p></strong>
+        <p id="desc"></p>
 
         <script>
-            function myFunction() {
-                var seconds = new Date().getTime() / 1000;
-                var curtime = (seconds + 3600) % 12600;
-                var output;
-                var flavour;
+            function apexMap() {
+                var cycle = ((new Date().getTime() / 60000) - 60) % 630
 
-                if (curtime < 5400) {
+                var output
+                var flavour
+                var residual
+
+                if (cycle < 60) {
                     output = "World's Edge"
-                    flavour = "May the blessing of Matt be with you, Brother"
-                } else if (curtime < 10800) {
+                    residual = 60 - cycle
+                } else if (cycle < 120) {
                     output = "Kings Canyon"
-                    flavour = "It still loves me guys, right? Right?"
+                    residual = 120 - cycle
+                } else if (cycle < 150) {
+                    output = "Kings Canyon Night"
+                    residual = 150 - cycle
+                } else if (cycle < 240) {
+                    output = "World's Edge"
+                    residual = 240 - cycle
+                } else if (cycle < 330) {
+                    output = "Kings Canyon"
+                    residual = 330 - cycle
+                } else if (cycle < 360) {
+                    output = "Kings Canyon Night"
+                    residual = 360 - cycle
+                } else if (cycle < 480) {
+                    output = "World's Edge"
+                    residual = 480 - cycle
+                } else if (cycle < 600) {
+                    output = "Kings Canyon"
+                    residual = 600 - cycle
                 } else {
                     output = "Kings Canyon Night"
+                    residual = 630 - cycle
+                }
+
+                if (output == "World's Edge") {
+                    flavour = "May the blessing of Matt be with you, brother"
+                } else if (output == "Kings Canyon") {
+                    flavour = "It still loves me guys, right? Right?"
+                } else {
                     flavour = "Don't worry buddy, you'll be back to World's Edge in no time"
                 }
 
-                document.getElementById("map").innerHTML = output;
-                document.getElementById("desc").innerHTML = flavour;
+                var timer = "And will be for " + Math.ceil(residual) + " more minutes"
+
+                document.getElementById("map").innerHTML = output
+                document.getElementById("timer").innerHTML = timer
+                document.getElementById("desc").innerHTML = flavour
             }
         </script>
     </body>
