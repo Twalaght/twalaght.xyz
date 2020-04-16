@@ -14,47 +14,30 @@
 
         <script>
             function apexMap() {
-                var cycle = ((new Date().getTime() / 60000) - 60) % 630
+                var cycle = ((new Date().getTime() / 60000) - 60) % 300
 
                 var output
                 var flavour
                 var residual
 
-                if (cycle < 60) {
+                if (cycle < 120) {
                     output = "World's Edge"
-                    residual = 60 - cycle
-                } else if (cycle < 120) {
-                    output = "Kings Canyon"
                     residual = 120 - cycle
-                } else if (cycle < 150) {
-                    output = "Kings Canyon Night"
-                    residual = 150 - cycle
-                } else if (cycle < 240) {
-                    output = "World's Edge"
-                    residual = 240 - cycle
-                } else if (cycle < 330) {
+                } else if (cycle < 210) {
                     output = "Kings Canyon"
-                    residual = 330 - cycle
-                } else if (cycle < 360) {
-                    output = "Kings Canyon Night"
-                    residual = 360 - cycle
-                } else if (cycle < 480) {
+                    residual = 210 - cycle
+                } else if (cycle < 270) {
                     output = "World's Edge"
-                    residual = 480 - cycle
-                } else if (cycle < 600) {
-                    output = "Kings Canyon"
-                    residual = 600 - cycle
+                    residual = 270 - cycle
                 } else {
-                    output = "Kings Canyon Night"
-                    residual = 630 - cycle
+                    output = "Kings Canyon"
+                    residual = 300 - cycle
                 }
 
                 if (output == "World's Edge") {
                     flavour = "May the blessing of Matt be with you, brother"
-                } else if (output == "Kings Canyon") {
-                    flavour = "It still loves me guys, right? Right?"
                 } else {
-                    flavour = "Don't worry buddy, you'll be back to World's Edge in no time"
+                    flavour = "I liked the thought of you a lot better"
                 }
 
                 var timer = "And will be for " + Math.ceil(residual) + " more minutes"
